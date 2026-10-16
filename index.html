@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как я делаю AI-ролики</title>
+<style>
+  :root {
+    --bg: #0a0810;
+    --panel: #121018;
+    --panel2: #17141f;
+    --border: #272232;
+    --accent: #DE003F;
+    --accent2: #ff3d6e;
+    --text: #f5f1f4;
+    --muted: #938c99;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 900px 600px at 15% -5%, rgba(222,0,63,.22) 0%, transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 100%, rgba(222,0,63,.12) 0%, transparent 55%),
+      var(--bg);
+    color: var(--text);
+    font-family: -apple-system, 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+  }
+
+  .card {
+    position: relative;
+    max-width: 440px;
+    width: 100%;
+    background: linear-gradient(180deg, var(--panel2) 0%, var(--panel) 100%);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 48px 36px 36px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 40px 80px -30px rgba(0,0,0,.6);
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -60%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140%;
+    height: 220px;
+    background: radial-gradient(ellipse at center, rgba(222,0,63,.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .kicker {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2.5px;
+    color: var(--accent2);
+    font-size: 10.5px;
+    margin-bottom: 22px;
+    text-transform: uppercase;
+    background: rgba(222,0,63,.1);
+    border: 1px solid rgba(222,0,63,.25);
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+  .kicker .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent2);
+    box-shadow: 0 0 0 0 rgba(255,61,110,.6);
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0% { box-shadow: 0 0 0 0 rgba(255,61,110,.55); }
+    70% { box-shadow: 0 0 0 6px rgba(255,61,110,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,61,110,0); }
+  }
+
+  h1 {
+    position: relative;
+    font-size: 36px;
+    line-height: 1.18;
+    margin: 0 0 16px 0;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .2px;
+  }
+  h1 .accent {
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  p.sub {
+    position: relative;
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin: 0 0 32px 0;
+    padding: 0 6px;
+  }
+
+  a.dl {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 17px 28px;
+    border-radius: 16px;
+    font-size: 15.5px;
+    box-shadow: 0 12px 28px -10px rgba(222,0,63,.55);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  a.dl:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -10px rgba(222,0,63,.65); }
+  a.dl:active { transform: translateY(0); }
+
+  .icon-dl {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+  }
+  .icon-dl svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+  .icon-dl .arrow {
+    animation: bob 1.6s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(3px); }
+  }
+
+  .meta {
+    position: relative;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .5px;
+  }
+  .meta b { color: var(--accent2); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="kicker"><span class="dot"></span>AI-продакшн · метод</div>
+    <h1>Как я делаю<br><span class="accent">AI&#8209;ролики</span></h1>
+    <p class="sub">Рабочий метод для Seedance 2.5 — от идеи до монтажа, плюс полная структура промпта. Один файл, который легко листать.</p>
+    <a class="dl" href="Kak_ya_delayu_AI-roliki.pdf" download="Kak_ya_delayu_AI-roliki.pdf">
+      <span class="icon-dl">
+        <svg viewBox="0 0 24 24" fill="none" preserveAspectRatio="xMidYMid meet">
+          <path class="arrow" d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5 19h14" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+        </svg>
+      </span>
+      <span class="label">Скачать PDF</span>
+    </a>
+    <div class="meta">Автор: <b>NIKOLAI</b> · @boli_koli_di</div>
+  </div>
+</body>
+</html>
